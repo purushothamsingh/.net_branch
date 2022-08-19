@@ -1,0 +1,15 @@
+C:\Users\Reliance Digital\Desktop\.net\LinqConcept\LinqConcept\obj\Debug\net6.0\LinqConcept.csproj.AssemblyReference.cache
+C:\Users\Reliance Digital\Desktop\.net\LinqConcept\LinqConcept\obj\Debug\net6.0\LinqConcept.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Reliance Digital\Desktop\.net\LinqConcept\LinqConcept\obj\Debug\net6.0\LinqConcept.AssemblyInfoInputs.cache
+C:\Users\Reliance Digital\Desktop\.net\LinqConcept\LinqConcept\obj\Debug\net6.0\LinqConcept.AssemblyInfo.cs
+C:\Users\Reliance Digital\Desktop\.net\LinqConcept\LinqConcept\obj\Debug\net6.0\LinqConcept.csproj.CoreCompileInputs.cache
+C:\Users\Reliance Digital\Desktop\.net\LinqConcept\LinqConcept\bin\Debug\net6.0\LinqConcept.exe
+C:\Users\Reliance Digital\Desktop\.net\LinqConcept\LinqConcept\bin\Debug\net6.0\LinqConcept.deps.json
+C:\Users\Reliance Digital\Desktop\.net\LinqConcept\LinqConcept\bin\Debug\net6.0\LinqConcept.runtimeconfig.json
+C:\Users\Reliance Digital\Desktop\.net\LinqConcept\LinqConcept\bin\Debug\net6.0\LinqConcept.dll
+C:\Users\Reliance Digital\Desktop\.net\LinqConcept\LinqConcept\bin\Debug\net6.0\LinqConcept.pdb
+C:\Users\Reliance Digital\Desktop\.net\LinqConcept\LinqConcept\obj\Debug\net6.0\LinqConcept.dll
+C:\Users\Reliance Digital\Desktop\.net\LinqConcept\LinqConcept\obj\Debug\net6.0\refint\LinqConcept.dll
+C:\Users\Reliance Digital\Desktop\.net\LinqConcept\LinqConcept\obj\Debug\net6.0\LinqConcept.pdb
+C:\Users\Reliance Digital\Desktop\.net\LinqConcept\LinqConcept\obj\Debug\net6.0\LinqConcept.genruntimeconfig.cache
+C:\Users\Reliance Digital\Desktop\.net\LinqConcept\LinqConcept\obj\Debug\net6.0\ref\LinqConcept.dll
