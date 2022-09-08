@@ -9,6 +9,7 @@ namespace CrudMvc.Models
         [Required]
         public string Name { get; set; }
 
+        [Range(1,100,ErrorMessage ="Display Order between 1,100 only..")]
         public int DisplayOrder { get; set; }
 
         public DateTime CreatedDateTime { get; set; } = DateTime.Now; 

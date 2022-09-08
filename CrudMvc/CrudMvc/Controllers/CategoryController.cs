@@ -33,6 +33,12 @@ namespace CrudMvc.Controllers
         {
            using(var db = new ApplicationDbContext())
             {
+                if(obj.Name == obj.DisplayOrder.ToString())
+                {
+                    ModelState.AddModelError("CustomError", "Both are equal"); //custom error with key value pairs
+                    ModelState.AddModelError("Name", "this is false"); //custom error display below label
+                }
+
 
                 if (ModelState.IsValid)
                 {

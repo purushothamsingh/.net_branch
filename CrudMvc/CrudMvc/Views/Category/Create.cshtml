@@ -15,6 +15,7 @@
            <h2 class="text-warning">Create Category</h2>
            <hr />
        </div>
+       <div asp-validation-summary="All"></div>
 
        <div class="mb-3"> 
            <label asp-for="Name"> </label>
@@ -47,3 +48,9 @@
 
 </form>
 
+
+@section Scripts{
+    @{
+        <partial name="_ValidationScriptsPartial"/>    // client side validation....
+    }
+}
