@@ -19,6 +19,6 @@ namespace CrudMvc.Data
             optionsBuilder.UseSqlServer("server=.;database=Bulky;trusted_connection=true;");
           //  optionsBuilder.UseSqlServer(connectionString: "MyConn");
         }
-        DbSet<Category> Categories {get; set; }
+      public  DbSet<Category> Categories {get; set; }
     }
 }
