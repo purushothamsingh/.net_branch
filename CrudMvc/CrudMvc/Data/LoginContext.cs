@@ -3,23 +3,22 @@ using Microsoft.EntityFrameworkCore;
 
 namespace CrudMvc.Data
 {
-    public class ApplicationDbContext : DbContext
+    public class LoginContext: DbContext 
     {
-        public ApplicationDbContext() { }
 
+        public LoginContext() { }
 
-        public ApplicationDbContext(DbContextOptions options):base(options)
-        {
+        public LoginContext(DbContextOptions<LoginContext> options) : base(options) { }
 
-        }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             // optionsBuilder.UseSqlServer(@"Server=(.);Database=ManagementDB;Trusted_Connection=True;");
             optionsBuilder.UseSqlServer("server=.;database=Bulky;trusted_connection=true;");
-          //  optionsBuilder.UseSqlServer(connectionString: "MyConn");
+            //  optionsBuilder.UseSqlServer(connectionString: "MyConn");
         }
-      public  DbSet<Category> Categories {get; set; }
-      //public DbSet<Userstools> Userstool {get; set; }
+        public DbSet<Userstools> userstools { get; set; }
+
+
     }
 }

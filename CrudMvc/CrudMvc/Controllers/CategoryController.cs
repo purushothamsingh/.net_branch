@@ -8,10 +8,15 @@ namespace CrudMvc.Controllers
     public class CategoryController : Controller
     {
 
+
+       
+
        public static ApplicationDbContext db =  new ApplicationDbContext();
 
         public IActionResult Index()
         {
+
+            ViewBag.name = HttpContext.Session.GetString("UserName");
             using (var db = new ApplicationDbContext())
             {
                var ob =  db.Categories.ToList();
@@ -87,5 +92,14 @@ namespace CrudMvc.Controllers
                 return View(obj);
             }
         }
+
+
+     
     }
+
+   
+
+
+
+
 }
