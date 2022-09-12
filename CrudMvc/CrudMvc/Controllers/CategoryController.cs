@@ -49,6 +49,7 @@ namespace CrudMvc.Controllers
                 {
                     db.Categories.Add(obj);
                     db.SaveChanges();
+                    TempData["Success"] = "Action Created Sucessfully...";
                     return RedirectToAction("Index", "Category");  // action - controller 
                 }
               return View(obj);
@@ -87,6 +88,7 @@ namespace CrudMvc.Controllers
                 {
                     db.Categories.Update(obj);
                     db.SaveChanges();
+                    TempData["Success"] = "Action Changed Sucessfully...";
                     return RedirectToAction("Index", "Category");  // action - controller 
                 }
                 return View(obj);
