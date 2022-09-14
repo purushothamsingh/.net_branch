@@ -39,7 +39,7 @@ namespace MvcGroceryMangement.Controllers
 
                     HttpContext.Session.SetString("UserName", obj.Admin_UserName);
                     TempData["Success"] = "Logged in Sucessfully..";
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Create", "User");
                 }
                 else
                 {
@@ -48,6 +48,15 @@ namespace MvcGroceryMangement.Controllers
                 }
             }
             return View();
+        }
+
+
+
+        public IActionResult Logout()
+        {
+            HttpContext.Session.Clear();
+            return RedirectToAction("Index", "Home");
+
         }
 
     }

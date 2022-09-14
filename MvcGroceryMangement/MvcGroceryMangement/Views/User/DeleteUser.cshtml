@@ -1,0 +1,34 @@
+﻿@model MvcGroceryMangement.Models.User
+
+@{
+    ViewData["Title"] = "DeleteUser";
+}
+
+<h1>DeleteUser</h1>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>User</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.UserName)
+        </dt>
+        <dd class = "col-sm-10 text-dark">
+            @Html.DisplayFor(model => model.UserName)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Password)
+        </dt>
+        <dd class = "col-sm-10 text-dark">
+            @Html.DisplayFor(model => model.Password)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="Delete" class="btn btn-danger text-dark " /> 
+        <a asp-controller="user" asp-action="create"> <input type="button"  value="Back to List" class="btn btn-primary text-dark" /></a>
+        swal("Good job!", "You clicked the button!", "success");
+    </form>
+</div>
