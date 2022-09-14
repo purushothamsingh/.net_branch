@@ -8,6 +8,7 @@
 
 <h4>Login</h4>
 <hr />
+<div asp-validation-summary="All"></div>
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Index">
@@ -31,3 +32,9 @@
 </div>
 
 
+@section Scripts{
+    @{
+        <partial name="_ValidationScriptsPartial" />
+        // client side validation....
+    }
+    }

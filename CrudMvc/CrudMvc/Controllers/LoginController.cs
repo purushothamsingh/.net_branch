@@ -23,16 +23,25 @@ namespace CrudMvc.Controllers
         [ActionName("Index")]
         public IActionResult Index_( Userstools obj )
         {
-            HttpContext.Session.SetString("UserName", obj.Name);
+            
           
             using (var db = new LoginContext ())
             {
                 if (ModelState.IsValid)
-                {
+                { 
+                    var obj1 = (from i in db.userstools where i.Name == obj.Name  &&  i.Password == obj.Password select i).SingleOrDefault();
 
-                    var obj1 = (from i in db.userstools where i.Name == obj.Name  &&  i.Password == obj.Password select i).SingleOrDefault(); 
-                  if(obj1 != null)
+                    if (obj.Name == obj.Password.ToString())
                     {
+                        ModelState.AddModelError("CustomError", "Both are equal"); //custom error with key value pairs
+                        ModelState.AddModelError("Name", "this is false"); //custom error display below label
+                    }
+
+                    if (obj1 != null)
+                    { 
+
+                        HttpContext.Session.SetString("UserName", obj.Name);
+                        TempData["Success"] = "Logged in Sucessfully..";
                         return RedirectToAction("Index", "Category");
                     }
                 }

@@ -6,11 +6,7 @@ using System.Text.RegularExpressions;
 namespace CrudMvc.Controllers
 {
     public class CategoryController : Controller
-    {
-
-
-       
-
+    { 
        public static ApplicationDbContext db =  new ApplicationDbContext();
 
         public IActionResult Index()
