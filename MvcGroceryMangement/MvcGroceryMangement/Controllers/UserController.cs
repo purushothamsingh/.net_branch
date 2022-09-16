@@ -9,10 +9,6 @@ namespace MvcGroceryMangement.Controllers
     public class UserController : Controller
     {
 
-
-
-
-
         public static ApplicationDbContext db;
         public UserController(ApplicationDbContext _db)
         {
@@ -23,7 +19,8 @@ namespace MvcGroceryMangement.Controllers
         {
 
             List<User> users = db.users.ToList();
-            const int pageNum = 3;
+            const int pageNum = 5
+                ;
             if (page < 1)
             {
                 page = 1;
@@ -111,9 +108,8 @@ namespace MvcGroceryMangement.Controllers
 
         public IActionResult User_Login()
         {
-            ViewBag.name = HttpContext.Session.GetString("UserName");
-
-
+            HttpContext.Session.SetString("Controller_c", "User");
+            TempData["c"] = "User";
             return RedirectToAction("Admin_Login", "Admin");
         }
 

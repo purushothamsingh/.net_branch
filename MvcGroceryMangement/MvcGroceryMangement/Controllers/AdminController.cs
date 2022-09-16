@@ -17,6 +17,8 @@ namespace MvcGroceryMangement.Controllers
         public IActionResult Admin_Login()
         {
             ViewBag.name = HttpContext.Session.GetString("UserName");
+           // ViewBag.c= HttpContext.Session.GetString("Controller_c");
+           
             return View();
         }
 

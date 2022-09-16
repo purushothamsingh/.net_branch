@@ -18,11 +18,11 @@
 
                 <li class="page-item ">
 
-                    <a class="page-link" asp-controller="User" asp-action="Create" asp-rounte-page="1">First</a>
+                    <a class="page-link" asp-controller="User" asp-action="Create" asp-route-page="1">First</a>
                 </li>
                 <li class="page-item ">
 
-                    <a class="page-link" asp-controller="User" asp-action="Create" asp-rounte-page="@(Model.CurrentPage-1)">Previous</a>
+                    <a class="page-link" asp-controller="User" asp-action="Create" asp-route-page="@(Model.CurrentPage-1)">Previous</a>
                 </li>
 
 
@@ -40,11 +40,11 @@
 
                 <li class="page-item "> 
 
-                    <a class="page-link" asp-controller="User" asp-action="Create" asp-rounte-page="@(Model.CurrentPage+1)">Next</a>
+                    <a class="page-link" asp-controller="User" asp-action="Create" asp-route-page="@(Model.CurrentPage+1)">Next</a>
                 </li>
                 <li class="page-item ">
 
-                    <a class="page-link" asp-controller="User" asp-action="Create" asp-rounte-page="@(Model.TotalPages)">Last</a>
+                    <a class="page-link" asp-controller="User" asp-action="Create" asp-route-page="@(Model.TotalPages)">Last</a>
                 </li>
 
 

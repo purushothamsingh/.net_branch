@@ -1,0 +1,33 @@
+﻿@model MvcGroceryMangement.Models.GroceryProducts
+
+
+
+<h1 class="p-3">Cart Area </h1>
+
+<div class="container border-3">
+    <table class="table table-secondary border-2  mt-xl-5 table-responsive-xxl border-4">
+
+
+        <thead class="table-dark ">
+            <tr>
+                <th scope="col">ProductTitle</th>
+                <th scope="col">ProductPrice</th>
+                <th scope="col">Description</th>
+                <th scope="col">TotalAmount</th>
+            </tr>
+        </thead>
+        <tbody>
+          
+
+                <tr>
+                    <td>@Model.ProductTitle</td>
+                    <td>@Model.Price</td>
+                  <td>@Model.ProductDesc</td>
+                  <td>100</td>
+                </tr>
+
+
+            
+
+        </tbody>
+    </table>
