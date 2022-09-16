@@ -1,8 +1,23 @@
-﻿@model IEnumerable<MvcGroceryMangement.Models.User>
+﻿@using MvcGroceryMangement.Models;
+@using PagedList;
+@using PagedList.Mvc;
 
-
+@model IEnumerable<MvcGroceryMangement.Models.User >
 @{
     ViewData["Title"] = "Index";
+
+
+
+    ApplyPagination pager = new ApplyPagination();
+
+    int pageNo = 0;
+    if(ViewBag.Pager != null){
+        pager = ViewBag.Pager;
+        pageNo = pager.CurrentPage;
+    }
+
+
+
 }
 
 <h1 class="p-3" >List Of Users </h1>
@@ -48,4 +63,22 @@
         </tbody>
 </table>
 
-</div>
+ @*@{
+        var prevDisabaled = !Model.PreviousPage ? "disabled" : "";
+        var nextDisabled = !Model.NextPage ? "disabled" : "";
+
+ }
+
+
+
+
+<a asp-action = "Create" asp-route-pageNumber = "@Model.PageIndex-1" class="btn btn-primary @prevDisabaled" >
+    Previous
+</a>
+<a asp-action="Create" asp-route-pageNumber="@Model.PageIndex+1" class="btn btn-primary @nextDisabled">
+        Next
+</a>*@
+
+<partial name="_Pagination"  model="@pager"/>
+
+

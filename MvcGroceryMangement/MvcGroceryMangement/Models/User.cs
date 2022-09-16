@@ -1,17 +1,14 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace MvcGroceryMangement.Models
 {
-    public class User
+    public partial class User
     {
         [Key]
         public int Id { get; set; }
-
-        [Required]
-        public string UserName { get; set; }
-
-        [Required]
-        public string Password { get; set; }
-
+        public string UserName { get; set; } = null!;
+        public string Password { get; set; } = null!;
     }
 }

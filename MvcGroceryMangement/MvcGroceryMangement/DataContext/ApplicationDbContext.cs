@@ -9,6 +9,7 @@ namespace MvcGroceryMangement.DataContext
         { }
         public DbSet<Admin> Admins { get; set; }
         public DbSet<User> users { get; set; }
+        public DbSet<GroceryProducts> GroceryProducts { get; set; }
     }
 
 }
