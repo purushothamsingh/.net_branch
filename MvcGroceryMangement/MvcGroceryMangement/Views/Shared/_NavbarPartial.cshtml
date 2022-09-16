@@ -1,7 +1,9 @@
 ﻿@using Microsoft.AspNetCore.Http
 @inject IHttpContextAccessor HttpContextAccessor
 
-
+@{
+    ViewBag.name = HttpContextAccessor.HttpContext.Session.GetString("UserName");
+}
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
         <a class="navbar-brand" href="#">Grocery</a>
@@ -16,13 +18,21 @@
                         <span class="visually-hidden">(current)</span>
                     </a>
                 </li>
+                @if (@ViewBag.name != null)
+                {
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Features</a>
+                        <a class="nav-link" asp-controller="User" asp-action="AddItem">Addtem</a>
                 </li>
+              
                 <li class="nav-item">
-                    <a class="nav-link" href="#">CartArea</a>
-                    
+                    <a class="nav-link" asp-controller="Cart" asp-action="CartView">CartArea</a>
+
                 </li>
+                 <li class="nav-item">
+                    <a class="nav-link" asp-controller="User" asp-action="Create">ManageUsers</a>
+
+                </li>
+                }
                 <li class="nav-item">
                     <a class="nav-link" href="#">About</a>
                 </li>
@@ -37,9 +47,7 @@
         </div>
         <div class="navbar-collapse collapse w-100 order-3" id="navbarColor011">
 
-            @{
-                ViewBag.name = HttpContextAccessor.HttpContext.Session.GetString("UserName");
-            }
+            
 
             @if(ViewBag.name != null){
                 <ul class="navbar-nav ms-auto ">

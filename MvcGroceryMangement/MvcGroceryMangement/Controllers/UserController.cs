@@ -152,7 +152,26 @@ namespace MvcGroceryMangement.Controllers
 
         }
 
-    }
+
+        public IActionResult AddItem()
+        {
+            db.GroceryProducts.ToList();
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult AddItem(GroceryProducts obj)
+        {
+            if (ModelState.IsValid)
+            {
+                db.GroceryProducts.Add(obj);
+                db.SaveChanges();
+                TempData["Success"] = "Item Added Sucessfully...";
+                return RedirectToAction("Index", "Home");  // action - controller 
+            }
+            return View(obj);
+        }
+}
 
 
 }

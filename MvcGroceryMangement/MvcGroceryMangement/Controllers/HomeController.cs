@@ -56,12 +56,12 @@ namespace MvcGroceryMangement.Controllers
                 if (res != null)
                 {
                     var projects = db.GroceryProducts.Where(x => x.Id == id)
-    .Select(x => new Cart
-    {
-        ProductTitle = x.ProductTitle,
-        Price = x.Price,
-        ProductDesc =x.ProductDesc,
-    }).ToList();
+                                        .Select(x => new Cart
+                                        {                                               //important
+                                            ProductTitle = x.ProductTitle,
+                                            Price = x.Price,
+                                            ProductDesc =x.ProductDesc,
+                                        }).ToList();
 
                    foreach(var item in projects)
                     {

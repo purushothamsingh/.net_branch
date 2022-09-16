@@ -59,6 +59,14 @@ namespace MvcGroceryMangement.Controllers
 
         public IActionResult Logout()
         {
+            var res = db.Carts.ToList();
+            foreach(var item in res)
+            {
+                db.Remove(item);
+                db.SaveChanges();
+            }
+
+
             HttpContext.Session.Clear();
             return RedirectToAction("Index", "Home");
 
