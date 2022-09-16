@@ -59,7 +59,7 @@ namespace MvcGroceryMangement.Controllers
 
 
                     TempData["Success"] = "Added to cart  Sucessfully..";
-                    return View(res);
+                    return RedirectToAction("Index","Home");
                 }
                 else
                 {
