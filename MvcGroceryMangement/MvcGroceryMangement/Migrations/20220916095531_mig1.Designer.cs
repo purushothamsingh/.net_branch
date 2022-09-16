@@ -11,8 +11,8 @@ using MvcGroceryMangement.DataContext;
 namespace MvcGroceryMangement.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220914063321_mig2")]
-    partial class mig2
+    [Migration("20220916095531_mig1")]
+    partial class mig1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -44,6 +44,39 @@ namespace MvcGroceryMangement.Migrations
                     b.ToTable("Admins");
                 });
 
+            modelBuilder.Entity("MvcGroceryMangement.Models.GroceryProducts", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<int>("Price")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ProdImgUrl")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ProductDesc")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ProductTitle")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("GroceryProducts");
+                });
+
             modelBuilder.Entity("MvcGroceryMangement.Models.User", b =>
                 {
                     b.Property<int>("Id")
@@ -63,6 +96,17 @@ namespace MvcGroceryMangement.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("users");
+                });
+
+            modelBuilder.Entity("MvcGroceryMangement.Models.GroceryProducts", b =>
+                {
+                    b.HasOne("MvcGroceryMangement.Models.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
                 });
 #pragma warning restore 612, 618
         }

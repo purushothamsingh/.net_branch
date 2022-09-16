@@ -13,6 +13,6 @@
 
         public int Price { get; set; }
 
-        public User UserID { get; set; }
+        public User User { get; set; }
     }
 }

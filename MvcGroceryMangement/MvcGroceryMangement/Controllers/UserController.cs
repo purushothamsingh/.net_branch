@@ -9,6 +9,10 @@ namespace MvcGroceryMangement.Controllers
     public class UserController : Controller
     {
 
+
+
+
+
         public static ApplicationDbContext db;
         public UserController(ApplicationDbContext _db)
         {
@@ -44,8 +48,6 @@ namespace MvcGroceryMangement.Controllers
         [ActionName("AddUser")]
         public IActionResult AddUser(User obj)
         {
-
-
             if (ModelState.IsValid)
             {
                 db.users.Add(obj);
@@ -54,9 +56,7 @@ namespace MvcGroceryMangement.Controllers
                 return RedirectToAction("Create", "User");  // action - controller 
             }
             return View(obj);
-       
         }
-
 
         public IActionResult Edit(int? id)
         {
@@ -106,5 +106,58 @@ namespace MvcGroceryMangement.Controllers
         }
 
 
+
+
+
+        public IActionResult User_Login()
+        {
+            ViewBag.name = HttpContext.Session.GetString("UserName");
+
+
+            return RedirectToAction("Admin_Login", "Admin");
+        }
+
+        [HttpPost]
+        public IActionResult User_Login(User obj)
+        {
+
+            if (ModelState.IsValid)
+            {
+                var obj1 = (from i in db.users where i.UserName == obj.UserName && i.Password == obj.Password select i).SingleOrDefault();
+
+                if (obj.UserName == obj.Password.ToString())
+                {
+                    ModelState.AddModelError("CustomError", "Both are equal"); //custom error with key value pairs
+                                                                               //  ModelState.AddModelError("Name", "this is false"); //custom error display below label
+                }
+
+                if (obj1 != null)
+                {
+
+                    HttpContext.Session.SetString("UserName", obj.UserName);
+                    TempData["Success"] = "Logged in Sucessfully..";
+                    return RedirectToAction("Index", "Home");
+                }
+                else
+                {
+                    TempData["Error"] = "Invalid Credentials..";
+                    return RedirectToAction("User_Login", "User");
+                }
+            }
+            return View();
+        }
+
+
+
+        public IActionResult Logout()
+        {
+            HttpContext.Session.Clear();
+            return RedirectToAction("Index", "Home");
+
+        }
+
     }
+
+
 }
+
