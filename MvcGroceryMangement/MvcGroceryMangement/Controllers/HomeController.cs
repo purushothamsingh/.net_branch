@@ -52,10 +52,22 @@ namespace MvcGroceryMangement.Controllers
 
             if (ModelState.IsValid)
             {
-                var res = db.GroceryProducts.Find(id);
-               
+                var res = db.GroceryProducts.Find(id);     
                 if (res != null)
                 {
+                    var projects = db.GroceryProducts.Where(x => x.Id == id)
+    .Select(x => new Cart
+    {
+        ProductTitle = x.ProductTitle,
+        Price = x.Price,
+        ProductDesc =x.ProductDesc,
+    }).ToList();
+
+                   foreach(var item in projects)
+                    {
+                        db.Carts.Add(item);
+                        db.SaveChanges();
+                    }
 
 
                     TempData["Success"] = "Added to cart  Sucessfully..";

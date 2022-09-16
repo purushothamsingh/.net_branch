@@ -26,6 +26,9 @@ namespace MvcGroceryMangement.Controllers
         public IActionResult Admin_Login(Admin obj )
         {
 
+  
+
+
             if (ModelState.IsValid)
             {
                 var obj1 = (from i in db.Admins where i.Admin_UserName == obj.Admin_UserName && i.Admin_Password == obj.Admin_Password select i).SingleOrDefault();
