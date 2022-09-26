@@ -1,4 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 using MvcGroceryMangement.DataContext;
 using MvcGroceryMangement.Models;
 using PagedList;
@@ -39,6 +41,7 @@ namespace MvcGroceryMangement.Controllers
 
         public IActionResult AddUser()
         {
+          
             return View();
         }
         [HttpPost]
@@ -155,13 +158,18 @@ namespace MvcGroceryMangement.Controllers
 
         public IActionResult AddItem()
         {
-            db.GroceryProducts.ToList();
+
+
+
+            ViewBag.users = new SelectList(db.users,"Id","UserName");
+
             return View();
         }
 
         [HttpPost]
         public IActionResult AddItem(GroceryProducts obj)
         {
+           
             if (ModelState.IsValid)
             {
                 db.GroceryProducts.Add(obj);
@@ -169,7 +177,7 @@ namespace MvcGroceryMangement.Controllers
                 TempData["Success"] = "Item Added Sucessfully...";
                 return RedirectToAction("Index", "Home");  // action - controller 
             }
-            return View(obj);
+            return View();
         }
 }
 

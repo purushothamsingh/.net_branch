@@ -92,12 +92,7 @@ namespace MvcGroceryMangement.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("UserId")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("UserId");
 
                     b.ToTable("GroceryProducts");
                 });
@@ -121,17 +116,6 @@ namespace MvcGroceryMangement.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("users");
-                });
-
-            modelBuilder.Entity("MvcGroceryMangement.Models.GroceryProducts", b =>
-                {
-                    b.HasOne("MvcGroceryMangement.Models.User", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("User");
                 });
 #pragma warning restore 612, 618
         }

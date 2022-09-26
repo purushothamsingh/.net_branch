@@ -1,0 +1,58 @@
+﻿@model List<string>
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+
+<div class="container">
+    
+
+
+    <div class="row">
+      
+            @foreach (var pdf in Model)
+            {
+                <div class="col-md-3">
+                    <div>
+                        <a href="/Home/Download/?filepath = @pdf">
+                        <button href="file://///SERVER/directory/@pdf">@pdf</button>
+                        </a>
+                        
+                       
+                    </div>
+
+                </div>
+
+            }
+
+        
+      
+       
+
+     
+</div>
+</div>
+
+
+<div class="container">
+    <div class="mb-3 mt-3">
+        <form method="post" asp-action="Index" asp-controller="Home" ,  enctype="multipart/form-data">
+
+            <div class="mb-4">
+                <label class="form-label">Upload File</label>
+                <input type="file" name="file" class="form-control" />
+            </div>
+            
+            <div class="mb-3">
+                <button class="btn btn-primary" type="submit">Upload</button>
+             </div>
+
+        </form>
+
+    </div>
+
+</div>

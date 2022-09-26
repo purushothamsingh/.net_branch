@@ -7,6 +7,7 @@ namespace MvcGroceryMangement.Controllers
 {
     public class HomeController : Controller
     {
+       
         public static ApplicationDbContext db;
         public HomeController(ApplicationDbContext _db)
         {
@@ -14,7 +15,7 @@ namespace MvcGroceryMangement.Controllers
         }
         public IActionResult Index()
         {
-
+            TempData["cval"] = 0;
             var res = db.GroceryProducts.ToList();
             return View(res);
         }

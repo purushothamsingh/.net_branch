@@ -1,4 +1,6 @@
-﻿namespace MvcGroceryMangement.Models
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace MvcGroceryMangement.Models
 {
     public class GroceryProducts
     {
@@ -13,6 +15,6 @@
 
         public int Price { get; set; }
 
-        public User User { get; set; }
+        
     }
 }

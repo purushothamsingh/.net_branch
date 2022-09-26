@@ -11,8 +11,8 @@ using MvcGroceryMangement.DataContext;
 namespace MvcGroceryMangement.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220916184832_mig2")]
-    partial class mig2
+    [Migration("20220921100708_mig1")]
+    partial class mig1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -94,12 +94,7 @@ namespace MvcGroceryMangement.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("UserId")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("UserId");
 
                     b.ToTable("GroceryProducts");
                 });
@@ -123,17 +118,6 @@ namespace MvcGroceryMangement.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("users");
-                });
-
-            modelBuilder.Entity("MvcGroceryMangement.Models.GroceryProducts", b =>
-                {
-                    b.HasOne("MvcGroceryMangement.Models.User", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("User");
                 });
 #pragma warning restore 612, 618
         }

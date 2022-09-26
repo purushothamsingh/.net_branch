@@ -1,12 +1,13 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using MvcGroceryMangement.DataContext;
 using MvcGroceryMangement.Models;
+using System.Dynamic;
 
 namespace MvcGroceryMangement.Controllers
 {
     public class AdminController : Controller
     {
-
+        DynamicConnect obj = new DynamicConnect();
         public static ApplicationDbContext db;
         public AdminController(ApplicationDbContext _db)
         {
@@ -16,24 +17,26 @@ namespace MvcGroceryMangement.Controllers
 
         public IActionResult Admin_Login()
         {
-            ViewBag.name = HttpContext.Session.GetString("UserName");
+
+            DynamicConnect model = new DynamicConnect();
+      
+            //ViewBag.name = HttpContext.Session.GetString("UserName");
            // ViewBag.c= HttpContext.Session.GetString("Controller_c");
            
-            return View();
+            return View(model);
         }
 
         [HttpPost]
-        public IActionResult Admin_Login(Admin obj )
+        public IActionResult Admin_Login(DynamicConnect obj  )
         {
 
   
 
 
-            if (ModelState.IsValid)
-            {
-                var obj1 = (from i in db.Admins where i.Admin_UserName == obj.Admin_UserName && i.Admin_Password == obj.Admin_Password select i).SingleOrDefault();
+          
+                var obj1 = (from i in db.Admins where i.Admin_UserName == obj.Admins.Admin_UserName && i.Admin_Password == obj.Admins.Admin_Password select i).SingleOrDefault();
 
-                if (obj.Admin_UserName == obj.Admin_Password.ToString())
+                if (obj.Admins.Admin_UserName == obj.Admins.Admin_Password.ToString())
                 {
                     ModelState.AddModelError("CustomError", "Both are equal"); //custom error with key value pairs
                   //  ModelState.AddModelError("Name", "this is false"); //custom error display below label
@@ -42,16 +45,16 @@ namespace MvcGroceryMangement.Controllers
                 if (obj1 != null)
                 {
 
-                    HttpContext.Session.SetString("UserName", obj.Admin_UserName);
+                    HttpContext.Session.SetString("UserName", obj.Admins.Admin_UserName);
                     TempData["Success"] = "Logged in Sucessfully..";
-                    return RedirectToAction("Create", "User");
+                    return RedirectToAction("Index", "Home");
                 }
                 else
                 {
                     TempData["Error"] = "Invalid Credentials..";
                     return RedirectToAction("Admin_Login", "Admin");
                 }
-            }
+            
             return View();
         }
 
