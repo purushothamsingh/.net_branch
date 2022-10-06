@@ -1,0 +1,62 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<script>
+    src="~/Otp/_verification.js"
+</script>
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <br />
+
+
+    <h1>
+        Enter Mobile Number
+    </h1>
+
+    <form>
+        <input type="text" id="number" placeholder="+91XXXXXXXXXX"/>
+        <button type="button" onclick="phoneAuth();">Send Code</button>
+
+    </form>
+
+    <br />
+    <div id="recaptcha-container">
+
+    </div>
+
+    <h1>Enter otp</h1>
+    <form>
+        <input  type="text" id="verificationCode" placeholder="Otp"/>
+        <button type="button" onclick="codeverify()" id="btnlogn">Verify Otp</button>
+    </form>
+    <script src="https://www.gstatic.com/firebasejs/8.9.1/firebase.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.9.1/firebase-analytics.js"></script>
+    <script>
+
+        // Import the functions you need from the SDKs you need
+       
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+
+        // Your web app's Firebase configuration
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+        const firebaseConfig = {
+            apiKey: "AIzaSyBzJeBQbeykljZH-xiozRoU3RwLxbtxWRs",
+            authDomain: "otp-verification-a25ce.firebaseapp.com",
+            projectId: "otp-verification-a25ce",
+            storageBucket: "otp-verification-a25ce.appspot.com",
+            messagingSenderId: "572945353370",
+            appId: "1:572945353370:web:c9ded00e8532a0f829ad23",
+            measurementId: "G-DBT6NHVPZM"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+
+
+    </script>
+    
+
+</div>

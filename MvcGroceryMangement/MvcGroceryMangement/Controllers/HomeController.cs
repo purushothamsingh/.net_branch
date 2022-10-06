@@ -24,7 +24,7 @@ namespace MvcGroceryMangement.Controllers
 
         public IActionResult Index(GroceryProducts id)
         {
-
+         
             var res = db.GroceryProducts.Find(id);
 
             if (ModelState.IsValid)
@@ -46,9 +46,9 @@ namespace MvcGroceryMangement.Controllers
             return View();
         }
 
-
-        public IActionResult Cart(int? id)
+        public IActionResult Cart(int? id ,GroceryProducts s)
         {
+            
             var r = db.GroceryProducts.Find(id);
 
             if (ModelState.IsValid)
@@ -58,8 +58,9 @@ namespace MvcGroceryMangement.Controllers
                 {
                     var projects = db.GroceryProducts.Where(x => x.Id == id)
                                         .Select(x => new Cart
-                                        {                                               //important
-                                            ProductTitle = x.ProductTitle,
+                                        {     
+                                            //important
+                                           ProductTitle=x.ProductTitle,
                                             Price = x.Price,
                                             ProductDesc =x.ProductDesc,
                                         }).ToList();

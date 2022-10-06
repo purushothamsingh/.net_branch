@@ -10,6 +10,7 @@
 
 @{
     ViewBag.name = HttpContextAccessor.HttpContext.Session.GetString("UserName");
+   
 }
 
 
@@ -64,25 +65,27 @@
        var cval = @ViewBag.value;
     <div class="col">
         <div class="card">
+      
 
             <img src="@item.ProdImgUrl" width="300" height="200" class="card-img-top"
                  alt="Hollywood Sign on The Hill" />
             <div class="card-body">
-                <h5 class="card-title">@item.ProductTitle -  @TempData["cval"] </h5>
+                <span class="default-price">@item.Price</span>
+                <h5 class="card-title">@item.ProductTitle - <span class="total-price">1</span> </h5>
                 <p class="card-text">
                     <h4>YOU CAN BUY  </h4>
                     <br />
                    
                     @item.ProductDesc
-                    <div class="bottom d-flex flex-row justify-content-center text-center">
-
-                        <div class="input-group mb-3 text-center">
+ 
+                    <div class="bottom d-flex flex-row justify-content-center text-center"]
+                    >
+                            <div class="input-group mb-3 text-center">
                             <button class="input-group-text  btn-outline-success plus">+</button>
-                            <input type="text" width="50px" class="form-control text-center disabled " value="1" >
-                            <button class="input-group-text btn-primary minus ">-</button>
-                        </div>
-                        
-                        <a onclick="add" href="/Home/cart/@item.Id"  class=" btn btn-secondary rounded-circle btn-sm add" style="height:50px">Buy <b>$1.75</b></a>
+                            <input asp-for="@item.Price"  name="@item.Price" type="text" id="amount" width="50px" class="form-control text-center disabled " value="1" >
+                            <button  class="input-group-text btn-primary minus ">-</button>
+                        </div>               
+                        <a href="/Home/cart?id=@item.Id&s= @Model  "  asp-route-s="@item.ProductTitle"  class=" btn btn-secondary rounded-circle btn-sm add" style="height:50px">Buy <b>$</b></a>
                         @*<a  class="nav-link" href="/Home/cart/@item.Id">About</a>*@
 
                     </div>
@@ -116,7 +119,73 @@
     }
     }
 </div>
+<a href="/Home/pdf">GeneratePdf</a>
 
 
+@*<script type="text/javascript">
+    function SetSession() {
+        var name = document.getElementById("amount").value;
+         console.log("whh");
+        var request;
+        if (window.XMLHttpRequest) {
+            //New browsers.
+            request = new XMLHttpRequest();
+        }
+        else if (window.ActiveXObject) {
+            //Old IE Browsers.
+            request = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        if (request != null) {
+            var url = "Home/Cart/1";
+            request.open("Get", url, false);
+            var params = "{name: '" + name + "'}";
+            console.log(params);
+            };
+            request.send(params);
+        }
+    }
+</script>*@
 
 
+<script>
+    const val = document.querySelectorAll(".plus").length
+    const prices = document.querySelectorAll(".default-price");
+    const totals = document.querySelectorAll(".total-price");
+
+
+    for (var i = 0; i < val; i++) {
+        const plus = document.querySelectorAll(".plus")[i].addEventListener("click", e => {
+
+            let val = e.target.nextElementSibling
+            e.target.nextElementSibling.value = +val.value + 1;
+            let card = e.srcElement.parentElement.parentElement.parentElement;
+            let price = card.childNodes[1].textContent;
+            card.childNodes[3].childNodes[1].textContent = price * val.value;
+
+            // totals[i].textContent = +prices[i].textContent * +e.target.nextElementSibling.value;
+
+        });
+    }
+    const valminus = document.querySelectorAll(".minus").length
+    for (var i = 0; i < valminus; i++) {
+        const minus = document.querySelectorAll(".minus")[i].addEventListener("click", e => {
+
+            let par = e.srcElement.parentElement.childNodes[3];
+            if (par.value > 1) {
+                par.value = par.value - 1;
+
+            }
+
+            let card = e.srcElement.parentElement.parentElement.parentElement;
+            //let price = card.childNodes[1].textContent;
+            let price = card.childNodes[1].textContent;
+            card.childNodes[3].childNodes[1].textContent = price * par.value;
+
+            //   console.log(par.value);
+            //  document.getElementsByClassName("total-price")[i].textContent = price*pri
+
+            console.log(card);
+
+        });
+    }
+</script>

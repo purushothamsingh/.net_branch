@@ -1,4 +1,7 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Http
+@inject IHttpContextAccessor HttpContextAccessor
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -17,6 +20,7 @@
     </header>
     <div class="container">
         <main role="main" class="pb-3">
+          
             <partial name="_ToastrNotification" />
             @RenderBody()
         </main>
@@ -28,30 +32,8 @@
     <script src="~/js/site.js" asp-append-version="true"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script>
-        const val = document.querySelectorAll(".plus").length
+   
 
-     
-        for (var i = 0; i < val; i++) {
-            const plus = document.querySelectorAll(".plus")[i].addEventListener("click", e => {
-               
-                let val = e.target.nextElementSibling
-                e.target.nextElementSibling.value = +val.value + 1;
-
-            });
-        }
-        const valminus = document.querySelectorAll(".minus").length
-        for (var i = 0; i < valminus; i++) {
-            const minus = document.querySelectorAll(".minus")[i].addEventListener("click", e => {
-
-                let par = e.srcElement.parentElement.childNodes[3];
-                if (par.value > 1) {
-                    par.value = par.value - 1;
-                }
-
-            });
-        }
-    </script>
     @await RenderSectionAsync("Scripts", required: false)
 
 </body>

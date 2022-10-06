@@ -19,7 +19,12 @@
     <PackageReference Include="PagedList" Version="1.17.0" />
     <PackageReference Include="PagedList.Mvc" Version="4.5.0" />
     <PackageReference Include="PageList" Version="1.2.0" />
+    <PackageReference Include="Rotativa" Version="1.7.3" />
+    <PackageReference Include="Rotativa.AspNetCore" Version="1.2.0" />
+    <PackageReference Include="Rotativa.MVC" Version="2.0.3" />
+    <PackageReference Include="Rotativa.NetCore" Version="1.0.4" />
     <PackageReference Include="SweetAlert" Version="1.0.0" />
+    <PackageReference Include="Syncfusion.HtmlToPdfConverter.QtWebKit.AspNet" Version="20.2.0.50" />
   </ItemGroup>
 
   <ItemGroup>

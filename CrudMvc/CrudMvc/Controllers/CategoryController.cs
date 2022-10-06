@@ -2,6 +2,8 @@
 using CrudMvc.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Text.RegularExpressions;
+using Rotativa.MVC;
+
 
 namespace CrudMvc.Controllers
 {
@@ -21,6 +23,12 @@ namespace CrudMvc.Controllers
 
         }
 
+
+        public ActionResult pdf()
+        {
+            var q = new Rotativa.MVC.ActionAsPdf("Index");
+            return q;
+        }
         public IActionResult Create()
         {
 

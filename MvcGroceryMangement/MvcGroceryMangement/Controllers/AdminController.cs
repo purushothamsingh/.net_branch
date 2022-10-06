@@ -29,11 +29,6 @@ namespace MvcGroceryMangement.Controllers
         [HttpPost]
         public IActionResult Admin_Login(DynamicConnect obj  )
         {
-
-  
-
-
-          
                 var obj1 = (from i in db.Admins where i.Admin_UserName == obj.Admins.Admin_UserName && i.Admin_Password == obj.Admins.Admin_Password select i).SingleOrDefault();
 
                 if (obj.Admins.Admin_UserName == obj.Admins.Admin_Password.ToString())

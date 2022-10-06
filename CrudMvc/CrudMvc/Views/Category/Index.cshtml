@@ -6,8 +6,8 @@
 
 
 <h2> Hello... @ViewBag.name</h2>
-
-<div class="container p-3">
+<a href="/Category/pdf">GeneratePdf</a>
+@*<div class="container p-3">
     <div class="row pt-4">
         <div class="col-6">
             <h2 class="text-warning">Categories_List</h2>
@@ -23,7 +23,7 @@
     <br />
     <br />
 
-
+*@
 <table class="table table-bordered table-striped" style="width:100%">
 
     <thead>
@@ -40,9 +40,7 @@
             <th>
                 DiplayOrder
             </th>
-            <th>
-
-            </th>
+           
         </tr>
     </thead>
 
@@ -62,12 +60,12 @@
                 <td width="20%">
                     @item.DisplayOrder
                 </td>
-                <td width="20%">
+               @* <td width="20%">
                     <div class="w-200 btn-group text-end" role="group" >
                             <a asp-controller="Category" asp-action="Edit" asp-route-id="@item.Id"  class="btn btn-warning mx-2"> <i class="bi bi-pencil-square"></i>Edit </a>
 
                     </div>
-                </td>
+                </td>*@
             </tr>
         }
 
