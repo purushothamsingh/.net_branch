@@ -26,6 +26,7 @@ namespace MvcGroceryMangement.Controllers
             var pager = new ApplyPagination(res, page, pageNum);
             int pageSkip = (page - 1) * pageNum;
             var data = carts.Skip(pageSkip).Take(pager.PageSize).ToList();
+
             this.ViewBag.Pager = pager;
             return View(data);
         }

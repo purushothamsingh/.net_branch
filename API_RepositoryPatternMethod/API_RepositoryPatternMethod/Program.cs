@@ -13,7 +13,15 @@ builder.Services.AddEndpointsApiExplorer();
 var connectionString = builder.Configuration.GetConnectionString("Myconn");
 builder.Services.AddDbContext<StudentContext>(options =>
     options.UseSqlServer(connectionString));
-
+builder.Services.AddCors(
+    (options) =>
+    {
+        options.AddPolicy("default", (option) =>
+        {
+            option.AllowAnyMethod().AllowAnyOrigin().AllowAnyOrigin();
+        });
+    }
+    );
 builder.Services.AddScoped<IRepositoryStudent, StudentRepository>();
 builder.Services.AddSwaggerGen();
 
@@ -26,6 +34,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+app.UseCors("default");
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
