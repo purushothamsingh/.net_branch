@@ -17,7 +17,7 @@ namespace JWT_AUTH.Controllers
     [ApiController]
     public class RegisterController : ControllerBase
     {
-        private static Response response =  new Response();
+            private static Response response =  new Response();
 
         private readonly JWT_Context db;
 

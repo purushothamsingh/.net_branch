@@ -13,6 +13,7 @@ namespace JWT_AUTH.Models
         public string Password { get; set; }
         [Compare("Password")]
         public string ConfirmPassword { get; set; }
+        [EmailAddress]
         public string Email { get; set; } = "dummy@gmail.com";
         //[Compare("Password")]
         //public byte[] ConfirmPassword {get; set; }
